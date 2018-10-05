@@ -1,5 +1,5 @@
 .PHONY: resources
-include Makefile-task.mk
+include makefiles/task.mk
 
 NAME_IMAGE = dtizonportilla/orbis-training-docker
 DOCKER_TAG = 2.0.0
