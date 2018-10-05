@@ -205,3 +205,69 @@ docker-compose:
 
   3. ¿Qué es un `target` en `Makefile`?
   - Generalmente es un archivo generado por un programa. También puede ser un comando para ejecutar ua tarea.
+
+# PARTE 10
+
+1. ¿Qué significa el comando -d?
+- Especifica un directorio
+
+2. ¿Porqué la sentencia comienza con @?
+- Oculta la instrucción ejecutada
+
+3. ¿Para qué sirve el comando mkdir?
+- Para crear una carpeta
+
+4. Explicar lo que hace la función `mkdir_deploy_dir`
+- Si no existe el directorio, entonces crear la carpeta
+
+# PARTE 10
+
+1. ¿Para qué sirve el uso de \?
+- Para el salto de línea
+
+2. ¿Para qué sirve el uso de &&?
+- Es un comando lógico que se ejecuta cuando el comando anterior se ejecutó con éxito
+ 
+3. ¿Qué función cumple usar los argumentos -rf?
+- Para realizar una eliminación recursiva forzada
+
+4. Explicar lo que hace la función `git_init` (linea por linea)
+- Primero se ubica en el directorio gh-pages, luego elimina el `.git` y después inicializa git
+
+# PARTE 10 
+
+1. ¿Para qué sirve el uso de eval?
+- Para ejecutar un comando almacenado en un a variable
+
+2. ¿Para qué sirve el uso de shell?
+- Para interpretar comando en el Makefile
+
+3. ¿Para qué sirve el uso de git log --pretty=format:"%an"?
+- git log: enlista la historia de commits
+- pretty=format te permite especificar lo que quieres que te muestre , %an se refiere a AuthorName
+
+4. ¿Cuál es la diferencia en usar git config y git config --global?
+- Con global puedo configurar de manera global, no tengo que volver a configurarlo en cada repositorio. 
+- El global modifica el archivo .gitconfig de l usuario de mi máquina, el otro crea el archivo config dentro de la carpeta .git del repositorio. 
+
+5. Explicar lo que hace la función `git_config` (línea por línea)
+- Crea las variables de `GIT_USER_NAME` y `GIT_USER_EMAIL`. Luego entra al directorio especificado y configura el nombre y usuario de git con las variables guardadas.
+
+# PARTE 10
+
+1. ¿Para qué sirve el uso de awk?
+- AWK es un lenguaje de programación diseñado para procesar datos basados en texto.
+
+2. ¿Para qué sirve el uso de sed?
+- sed  permite modificar el contenido de un fichero en base a un fichero de comandos. 
+
+3. Explicar lo que hace la función `git_add_remote_repository`
+- 1era linea: Guarda en una variable el nombre del repositorio remoto del push
+- 2da linea: Busca una cadena y reemplaza el valor que está buscando por otro valor. Es como un replace.- Luego entra a la carpeta especificada y agrega como origen del repositorio la variable guardada.
+
+# PARTE 11
+
+1. Explicar lo que hace la función `create_branch_gh_pages`
+- Entra al directorio especificado, y luego está creando y cambiando a la rama especificada.
+
+
