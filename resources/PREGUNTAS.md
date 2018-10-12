@@ -270,4 +270,88 @@ docker-compose:
 1. Explicar lo que hace la función `create_branch_gh_pages`
 - Entra al directorio especificado, y luego está creando y cambiando a la rama especificada.
 
+# PARTE 12
+1. Explicar lo que hace la función `copy_files_to_deploy`
+- Esta función lo que hace es copiar archivos de un directorio  a otro directorio.
 
+# PARTE 13
+
+1. Explicar lo que hace la función `git_add`
+- Entra al directorio especificado, agrega los cambios al staging area y verifica el estado de los archivos aplicando el `git status`.
+
+# PARTE 14
+1. Explicar lo que hace la función `create_commit` (línea por línea)
+- Primero obtiene el mensaje del último commit, luego se ubica en otrop directorio y finalmente hace un commit con el mensaje definido.
+
+# PARTE 15
+
+1. Explicar lo que hace la función `git_push` (línea por línea)
+- Primero entra al directorio y luego sube el último commit de manera forzada a la rama.
+
+# PARTE 16
+1. Explicar lo que hace la función `clean_workspace`
+- Borra el directorio de manera recursiva y forzada.
+
+# PARTE 17
+1. ¿Para qué sirve el uso de ifeq?
+- Significa `if equal`. Es una condicional que permite comparar un resultado. 
+
+2. ¿Para qué sirve el uso de strip?
+- Compara 2 cadenas, no teniendo en cuenta espacios en blanco, sino solo el contenido.
+
+3. Explicar lo que hace la función `show_deploy_url` (línea por línea)
+- Primero, guarda en una variable la ruta del  repositorio remoto donde se suben los cambios. 
+- Busca que esa variable contenga `git@`. Si existe, guarda la cadena en la nueva variable, y sino guarda la variable vacía. 
+- Luego, evalúa si esta última variable es igual a "vacío" usando `strip`. Si es verdadero, significa que el repositorio fue creado con protocolo HTTPS, de lo contrario, con SSH. Dependiendo de como fue creado, usa un ternario para extraer el nombre de usuario y guardarlo en una variable.
+- Luego, hace lo mismo para guardar el nombre del repositorio.
+- Por último, imprime  la url donde será publicado el proyecto.
+
+# PARTE 18
+1. `$(call mkdir_deploy_dir)`
+- La función pregunta si existe el directorio de deploy y sino existe lo crea. 
+
+2. `$(call git_init)`
+- La función inicializa el proyecto git dentro del directorio creado
+
+3. `$(call git_config)`
+- La función configura email y nombre de usuario de git del nuevo proyecto creado
+
+4. `$(call git_add_remote_repository)`
+- La función agrega un repositorio remoto al repositorio git creado del nuevo directorio.
+
+5. `$(call create_branch_gh_pages)`
+- La función crea una nueva rama basándose en la rama actual.
+
+6. `$(call copy_files_to_deploy)`
+- La función copia los archivos de un directorio a nuevo.
+
+7. `$(call git_add)`
+- La función agrega nuevos archivos al directorio y luego los muestra con `git status`
+
+8. `$(call create_commit)`
+- La función obtiene el mensaje del último commit y crea un nuevo commit con este mismo mensaje en el nuevo directorio con los cambios agregados.
+
+9. `$(call git_push)`
+- La función sube los últimos cambios en el nuevo directorio
+
+10. `$(call clean_workspace)`
+- La función elimina el directorio y su contenido
+
+11. `$(call show_deploy_url)`
+- La función muestra la URL del proyecto donde se realizo el último deploy
+
+
+
+
+# SECCION 12 -->  Ejercicio Makefile, Jenkins, Cloudformation
+TAREA 3:
+1. Explicar lo que hace la función `get_user_name`
+- Guarda en 2 variables: el nombre del repositorio remoto del proyecto actual y el nombre del usuario de dicho repositorio remoto.
+TAREA 4:
+1. ¿Qué significa el argumento s3?
+2. ¿Qué significa el argumento --delete?
+3. ¿Qué significa el argumento --acl?
+4. ¿Qué significa el argumento --region?
+5. ¿Para qué sirve el comando aws?
+6. Explicar lo que hace la función `deploy_bucket`
+ 
