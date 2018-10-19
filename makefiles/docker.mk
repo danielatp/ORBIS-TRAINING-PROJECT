@@ -11,4 +11,10 @@ endef
 docker.build:
 	$(call build)
 
+project-workspace:
+	echo "project-workspace"
+
+curl:
+	echo "curl"
+
 

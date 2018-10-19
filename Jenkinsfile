@@ -1,20 +1,31 @@
 pipeline {
     agent any
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
-    }
     stages {
-        stage('No-op') {
+        stage('Build') {
             steps {
-                sh 'ls'
+                sh 'make project-workspace'
+            }
+            steps {
+                sh 'make install'
             }
         }
-        stage('Deliver') {
+         stage('Test') {
             steps {
-                input "Finished using the web site?"
+                sh 'make start'
+            }
+            steps {
+                sh 'make curl'
             }
         }
+        stage('Deploy') {
+            steps {
+                sh 'make release'
+            }
+            steps {
+                sh 'make deploy.ghpages'
+            }
+        }
+        
     }
 
     post {

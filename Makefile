@@ -1,6 +1,7 @@
 .PHONY: resources
 include makefiles/task.mk
 include makefiles/deploy-ghpages.mk
+include makefiles/docker.mk
 # include makefiles/deploy-aws.mk
 
 NAME_IMAGE = dtizonportilla/orbis-training-docker
@@ -25,3 +26,4 @@ resources:
 
 build_lastest:
 	echo "Echooo";
+
