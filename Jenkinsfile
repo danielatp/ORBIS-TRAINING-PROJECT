@@ -20,7 +20,6 @@ pipeline {
     post {
         always {
             echo 'One way or another, I have finished'
-            junit 'build/reports/**/*.xml'
             deleteDir() /* clean up our workspace */
         }
         success { echo 'I succeeeded!' }
