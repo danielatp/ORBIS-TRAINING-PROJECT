@@ -9,7 +9,7 @@ pipeline {
                 sh 'make install'
             }
         }
-         stage('Test') {
+        stage('Test') {
             steps {
                 sh 'make start'
             }
