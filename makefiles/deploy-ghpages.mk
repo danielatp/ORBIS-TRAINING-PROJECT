@@ -2,7 +2,7 @@
 DEPLOY_DIR = deploy
 BUILD_DIR = build
 GIT_BRANCH = gh-pages
-GIT_PERSONAL_TOKEN = cc917692bc69fabfe2e3768c75be6e186185c6a6
+GIT_PERSONAL_TOKEN = c712ae5f964f899a757a4d59a9193c1908189377
 GIT_BRANCH_DIR = $(PWD)/$(DEPLOY_DIR)/$(GIT_BRANCH)
 
 define mkdir_deploy_dir
@@ -24,10 +24,12 @@ define git_config
 endef
 
 define git_add_remote_repository
-$(eval REPOSITORY := $(shell git remote -v | grep origin | grep '(push)'| awk '{print $$2}'))
-    $(eval GIT_REPOSITORY_REMOTE := $(shell echo $(REPOSITORY) | sed 's%https://%https://$(GIT_PERSONAL_TOKEN)@%g'))
+    $(eval REPOSITORY := $(shell git remote -v | grep origin | grep '(push)'| awk '{print $$2}'))
+    # $(eval GIT_REPOSITORY_REMOTE := $(shell echo $(REPOSITORY) | sed 's%https://%https://$(GIT_PERSONAL_TOKEN)@%g'))
+    $(eval GIT_REPOSITORY_REMOTE := "https://$(GIT_PERSONAL_TOKEN)@github.com/danielatp/ORBIS-TRAINING-PROJECT.git")
     cd $(GIT_BRANCH_DIR) && \
-     git remote add origin $(GIT_REPOSITORY_REMOTE)
+     git remote add origin $(GIT_REPOSITORY_REMOTE) && \
+     git remote -v
 endef
 
 define create_branch_gh_pages

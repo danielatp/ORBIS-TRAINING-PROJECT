@@ -1,13 +1,14 @@
 .PHONY: resources
 include makefiles/task.mk
 include makefiles/deploy-ghpages.mk
-include makefiles/docker.mk
+
 # include makefiles/deploy-aws.mk
 
 NAME_IMAGE = dtizonportilla/orbis-training-docker
 DOCKER_TAG = 2.0.0
 DOCKER_IMAGE = ${NAME_IMAGE}:${DOCKER_TAG}
 NAME = 'Claudia Valdivieso'
+include makefiles/docker.mk
 
 install:
 	docker run -it --rm --volume ${PWD}:/app ${DOCKER_IMAGE} npm install
