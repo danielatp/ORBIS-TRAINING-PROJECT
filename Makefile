@@ -1,7 +1,7 @@
 .PHONY: resources
 include makefiles/task.mk
 include makefiles/deploy-ghpages.mk
-include makefiles/deploy-aws.mk
+# include makefiles/deploy-aws.mk
 
 NAME_IMAGE = dtizonportilla/orbis-training-docker
 DOCKER_TAG = 2.0.0

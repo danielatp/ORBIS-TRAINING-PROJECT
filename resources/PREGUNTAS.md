@@ -341,12 +341,12 @@ docker-compose:
 - La función muestra la URL del proyecto donde se realizo el último deploy
 
 
-
-
 # SECCION 12 -->  Ejercicio Makefile, Jenkins, Cloudformation
+
 TAREA 3:
 1. Explicar lo que hace la función `get_user_name`
 - Guarda en 2 variables: el nombre del repositorio remoto del proyecto actual y el nombre del usuario de dicho repositorio remoto.
+
 TAREA 4:
 1. ¿Qué significa el argumento s3?
 2. ¿Qué significa el argumento --delete?
@@ -355,3 +355,42 @@ TAREA 4:
 5. ¿Para qué sirve el comando aws?
 6. Explicar lo que hace la función `deploy_bucket`
  
+
+# Parte 11 --> Jenkins
+## 1. Instalación de jenkins con docker
+1. ¿Que sucede si no volumeo el docker.sock?
+- Si no se volumea el docker.sock, no nos permite ejecutar comandos de docker dentro de un contenedor.
+- (Normalmente, los comandos los ejecutamos fuera del contenedor. Pero en este caso estamos usando docker dentro de uno)
+
+2. ¿Para que sirve el volumen var/jenkins_home?
+- Es el espacio donde se va a reflejar el workspace del jenkins
+
+3. ¿Puedo cambiar de puerto?
+- Sí, puedo cambiar el puerto que representa mi host, pero no el de docker (host:docker)
+
+4. ¿Que pasa si no utlizo el usuario root?
+- No voy a tener permiso para elmininar/crear carpetas.
+
+5. ¿Còmo instalo make en una imagen?
+- `apk add --update make`
+
+## 1.1 Workspace
+1. ¿Se puede crear un volúmen desde otro volúmen en docker? ¿Porqué?
+- No. Porque no puedo asignar un volumen a un espacio que ya ha sido asignado a otro volumen.
+
+2. ¿Para que sirve el comando docker create -v <dir> --name <container> <image>?
+- Para crear un contenedor que ocupa un espacio en el disco, sin ejecutarlo.
+
+3. ¿Qué hace el comando docker cp ./ <container>:<dir>?
+- Copia de un directorio (en este caso todo) al directorio de otro container.
+
+4. ¿Cómo creo una network usando docker run?
+- `docker network create <network_name>`
+- `docker run -it --net=<network_name> -v $PWD/app:/app  alpine:3.6 /bin/sh`
+
+5. ¿Cómo conecto una network a un container? usando docker run
+- `docker run -it --net=<network_name> -v $PWD/app:/app  alpine:3.6 /bin/sh`
+
+6. ¿Qué hace docker run -it --rm --volumes-from <container> -w <dir> <image> <command>?
+- Crea y ejecuta un contenedor y lo volumea a partir de otro contenedor Y especifica el directorio de trabajo, especifica la image, ejecuta algún comando y luego muere.
+
